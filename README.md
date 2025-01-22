@@ -126,12 +126,6 @@ Theme.Fonts provides a consistent typography system using the Poppins font famil
 *   ExtraLight
     
 
-### Usage
-
-Call Fonts.registerFonts() during app initialization to ensure custom fonts are registered. Fonts are loaded from the app's main bundle and registered programmatically.
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   Theme.Fonts.registerFonts()   `
-
 Spacing
 -------
 
@@ -167,7 +161,9 @@ Adjusts spacing based on screen size:
 
 Accommodates accessibility settings by scaling the base spacing value:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   Theme.Spacing.accessibleSpacing(base: CGFloat, isAccessibilityEnabled: Bool)   `
+```
+Theme.Spacing.accessibleSpacing(base: CGFloat, isAccessibilityEnabled: Bool)
+```
 
 CornerRadius
 ------------
@@ -192,7 +188,30 @@ Example Usage
 
 Here is an example of how to use Theme values in your SwiftUI views:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   import SwiftUI  struct ContentView: View {      var body: some View {          VStack(spacing: Theme.Spacing.medium) {              Text("Welcome")                  .font(.custom(Theme.Fonts.bold.rawValue, size: 24))                  .foregroundColor(Theme.Colors.textPrimary)              Button(action: {}) {                  Text("Get Started")                      .padding()                      .background(Theme.Colors.primary)                      .foregroundColor(Theme.Colors.textPrimary)                      .cornerRadius(Theme.CornerRadius.medium)              }          }          .padding(Theme.Spacing.large)          .background(Theme.Colors.background)      }  }   `
+```
+import SwiftUI
+
+struct ContentView: View {
+
+    var body: some View {
+        VStack(spacing: Theme.Spacing.medium) {
+            Text("Welcome")
+                .font(.custom(Theme.Fonts.bold.rawValue, size: 24))
+                .foregroundColor(Theme.Colors.textPrimary)
+                
+            Button(action: {}) {
+                Text("Get Started")
+                    .padding()
+                    .background(Theme.Colors.primary)
+                    .foregroundColor(Theme.Colors.textPrimary)
+                    .cornerRadius(Theme.CornerRadius.medium)
+            }
+        }
+        .padding(Theme.Spacing.large)
+        .background(Theme.Colors.background)
+    }
+}
+```
 
 License
 -------
