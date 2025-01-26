@@ -12,21 +12,46 @@ struct ContentView: View {
         ZStack {
             VStack(spacing: Theme.Spacing.medium) {
                 HStack(spacing: Theme.Spacing.dynamicSpacing(base: Theme.Spacing.medium)) {
-                    Rectangle()
-                        .fill(.red)
+                    RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
+                        .fill(Theme.Colors.textPrimary)
                         .frame(width: 100, height: 100)
                     
-                    Rectangle()
-                        .fill(.yellow)
+                    RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
+                        .fill(Theme.Colors.textSecondary)
                         .frame(width: 100, height: 100)
                 }
                 
-                Button {
-                    print("Hello")
+                /*
+                 Button {
+                 print("Hello")
+                 } label: {
+                 Text("Tap Me")
+                 }
+                 .buttonStyle(.primary(bgColor: Theme.Colors.primary, textColor: .white))
+                 .padding(.horizontal, Theme.Spacing.medium)
+                 */
+                
+                AsyncButton {
+                    do {
+                        if #available(iOS 16.0, *) {
+                            try await Task.sleep(for: .seconds(5))
+                            print("Task Complate")
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 } label: {
-                    Text("Tap Me")
+                    Text("Try me!")
+                } progress: {
+                    ProgressView()
+                        .tint(.white)
                 }
-                .buttonStyle(.primary(bgColor: Theme.Colors.primary, textColor: .white))
+                .buttonStyle(
+                    .primary(
+                        bgColor: Theme.Colors.primary,
+                        textColor: .white
+                    )
+                )
                 .padding(.horizontal, Theme.Spacing.medium)
             }
         }

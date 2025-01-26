@@ -58,6 +58,14 @@ extension Font {
     ///   - size: The size of the font.
     /// - Returns: A `Font` object with the specified custom font and size.
     static func poppins(_ font: Theme.Fonts, size: CGFloat) -> Font {
-        return .custom(font.rawValue, size: size)
+        let screenWidth = UIScreen.main.bounds.width
+        switch screenWidth {
+        case ..<375: // Small screens (e.g., iPhone SE)
+            return .custom(font.rawValue, size: size * 0.8)
+        case 375...440: // Medium screens (e.g., iPhone 13, 14, 15, 16)
+            return .custom(font.rawValue, size: size)
+        default: // Large screens (e.g., iPads)
+            return .custom(font.rawValue, size: size * 1.2)
+        }
     }
 }
